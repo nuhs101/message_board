@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'chat_page.dart';
+import 'profile_page.dart';
+import 'settings_page.dart';
 
 class HomePage extends StatelessWidget {
   final List<Map<String, String>> boards = [
@@ -61,19 +63,19 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: messageBoards.length,
+        itemCount: boards.length,
         itemBuilder: (context, index) {
-          final board = messageBoards[index];
+          final board = boards[index];
           return Card(
             margin: const EdgeInsets.all(10),
             child: ListTile(
-              leading: Image.asset(board['image'], width: 40, height: 40),
-              title: Text(board['name']),
+              leading: Image.asset(board['image']!, width: 40, height: 40),
+              title: Text(board['name']!),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => ChatPage(boardName: board['name']),
+                    builder: (_) => ChatPage(boardName: board['name']!),
                   ),
                 );
               },
